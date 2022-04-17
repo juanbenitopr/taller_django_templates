@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <nav>
+        <ul>
+            <li><strong>User Detail</strong></li>
+        </ul>
+        <ul>
+            <li><a href="{% url 'user-list' %}" role="button">User List</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <article>
+        <p>Username: {{ user.username | upper }}</p>
+        <p>Email: {{ user.email | lower }}</p>
+        <p>Date Joined: {{ user.date_joined|date }}</p>
+        <label for="is-active-{{ user.id }}">
+            Is Active:
+            <input id="is-active-{{ user.id }}" name="is-active-{{ user.id }}" type="checkbox"
+                   checked="{{ user.active }}"/>
+        </label>
+
+    </article>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <nav>
+        <ul>
+            <li><strong>User List</strong></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    {% with user_count=users.count %}
+        {% for user in users %}
+            <article>
+                <a href="{% url "user-detail" user.id %}">{{ user.username }}</a>
+            </article>
+        {% endfor %}
+        {{ user_count }}
+    {% endwith %}
+{% endblock %}
